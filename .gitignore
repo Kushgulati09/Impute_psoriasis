@@ -1,0 +1,30 @@
+# Genomics / large files
+*.vcf
+*.vcf.gz
+*.tbi
+*.bed
+*.bim
+*.fam
+*.bcf
+*.m3vcf
+*.log
+*.jar
+
+# Conda env files and python cache
+.env
+__pycache__/
+*.pyc
+
+# output/results
+results/
+data/
+raw_data/
+
+# VS Code
+.vscode/
+.DS_Store
+
+# secrets
+*.key
+*.pem
+secrets/
