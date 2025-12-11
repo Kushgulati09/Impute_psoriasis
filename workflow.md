@@ -12,3 +12,17 @@
 ## Select 100 samples
 - Created Python script "scripts/select_samples.py" to randomly select 100 samples (seed=42).
 - Ran script to generate raw_data/chosen_samples.txt.
+ 
+## 80 / 20 split 
+- Deterministic split using commands:
+    - head -n 80 chosen_samples.txt > ref_samples.txt
+    - tail -n 20 chosen_samples.txt > target_samples.txt 
+
+## Extract Ref. and Target Dense Truth VCFs
+- Extract reference individuals (80)(these will act as the reference panel):
+    - bcftools view -S ref_samples.txt -Oz -o ../ref/ref_chr22.vcf.gz ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
+    - tabix -p vcf ../ref/ref_chr22.vcf.gz
+
+- Extract target dense truth (full variants retained to later test accuracy of imputation):
+    - bcftools view -S target_samples.txt -Oz -o ../target/target_dense_chr22.vcf.gz ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
+    - tabix -p vcf ../target/target_dense_chr22.vcf.gz
