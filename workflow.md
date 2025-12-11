@@ -8,7 +8,6 @@
 ## Extract Sample list
 - Created "all_sample.txt" from the downloaded genotype VCF file using:
     - bcftools query -l ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz > all_samples.txt
-    - wc -l ./all_samples.txt  (output: 2504 (as expected))
 
 ## Select 100 samples
 - Created Python script "scripts/select_samples.py" to randomly select 100 samples (seed=42).
