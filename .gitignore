@@ -18,7 +18,7 @@ __pycache__/
 # output/results
 results/
 data/
-raw_data/
+# raw_data/   # Commented out to include all .txt files in raw_data
 
 # VS Code
 .vscode/
