@@ -44,4 +44,26 @@
     7. Produced final pseudo-array VCF ready for phasing:
         - `target/pseudoarray_maf5_final.vcf.gz`
 
+## Phase and Impute (Beagle)
+- Imputation and phasing were performed using Beagle (version 5.4), with the pseudo-array target genotypes provided as input and a phased 1000 Genomes reference panel. A reproducible bash wrapper was used to standardize memory usage, input paths, and output structure.
+- Inputs**
+    - Target pseudo-array VCF (unphased):  
+  `target/pseudoarray_maf5_final.vcf.gz`
+    - Reference panel (phased (1000G), dense):  
+  `ref/ref_chr22.vcf.gz`
+    - Beagle JAR:  
+  `tools/beagle.jar`
 
+- Method
+    - Beagle performs internal phasing of the target samples and imputes missing variants based on the reference haplotypes.
+    - Multi-threading was enabled to reduce runtime.
+    - Java memory allocation was explicitly set to ensure reproducibility.
+
+- Command (reproducible via script)
+```bash
+bash scripts/phase_and_impute_beagle.sh \
+  --target target/pseudoarray_maf5_final.vcf.gz \
+  --ref ref/ref_chr22.vcf.gz \
+  --out results/imputed_chr22 \
+  --beagle tools/beagle.jar \
+  --mem 4g

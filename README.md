@@ -1,4 +1,4 @@
-# Imputation + Psoriasis PRS Assessment
+# Imputation + Psoriasis PRS 
 
 Repository to reproduce imputation benchmark and PRS workflow (chr22 subset).
 Contents:
@@ -8,3 +8,4 @@ Contents:
 - `scripts/` : pipeline scripts (bash / python)
 - `results/` : plots and evaluation outputs
 - `docs/` : notes and methods
+- `tools/` : tool dependencies (java .jar file) 
