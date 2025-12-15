@@ -7,7 +7,7 @@
 *.fam
 *.bcf
 *.m3vcf
-*.log
+# *.log 
 *.jar
 
 # Conda env files and python cache
