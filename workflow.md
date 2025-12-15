@@ -88,6 +88,7 @@ bash scripts/phase_and_impute_beagle.sh \
 - Metric:
   - Empirical dosage R² (Pearson correlation squared between true and imputed dosages)
 - Created the evaluation script: `evaluate_imputation.py`
+- Command (reproducible via script):
 ```bash
 python scripts/evaluate_imputation.py \
   --truth target/target_dense_chr22.vcf.gz \
