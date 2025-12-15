@@ -81,3 +81,16 @@ bash scripts/phase_and_impute_beagle.sh \
 ## Post-imputation normalization (biallelic-only)
 - After imputation, variants were restricted to biallelic SNPs because imputation against a multi-allelic reference panel can reintroduce multi-allelic sites, leading to ambiguous DS and DR2 values.
 - Created a bash script `postprocess_imputed_biallelic.sh` which performs given tasks and maintains reproducibility.
+
+
+## Imputation accuracy evaluation
+- Imputation accuracy was evaluated by comparing imputed dosages (DS) against true dosages derived from the held-out dense target genotypes. Variants were matched between the dense truth and imputed VCFs using genomic coordinates and alleles (CHROM, POS, REF, ALT), avoiding reliance on rsIDs.
+- Metric:
+  - Empirical dosage R² (Pearson correlation squared between true and imputed dosages)
+- Created the evaluation script: `evaluate_imputation.py`
+```bash
+python scripts/evaluate_imputation.py \
+  --truth target/target_dense_chr22.vcf.gz \
+  --imputed results/imputed_chr22_biallelic.vcf.gz \
+  --out results/evaluation/imputation_accuracy.tsv
+```
