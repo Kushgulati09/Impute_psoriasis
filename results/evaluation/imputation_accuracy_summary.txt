@@ -1,0 +1,26 @@
+Number of variants evaluated: 172147
+
+Empirical R² summary:
+count    1.721470e+05
+mean     8.779425e-01
+std      2.496958e-01
+min      1.931630e-37
+25%      9.014565e-01
+50%      1.000000e+00
+75%      1.000000e+00
+max      1.000000e+00
+
+Beagle DR2 summary:
+count    172147.000000
+mean          0.894450
+std           0.217077
+min           0.000000
+25%           0.900000
+50%           1.000000
+75%           1.000000
+max           1.000000
+
+Correlation matrix:
+              r2_empirical  dr2_beagle
+r2_empirical      1.000000    0.639289
+dr2_beagle        0.639289    1.000000

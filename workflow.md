@@ -95,3 +95,18 @@ python scripts/evaluate_imputation.py \
   --imputed results/imputed_chr22_biallelic.vcf.gz \
   --out results/evaluation/imputation_accuracy.tsv
 ```
+
+## Imputation accuracy analysis and visualization
+- Empirical imputation accuracy was summarized and visualized using a custom Python script. Summary statistics (mean, variance, range) were computed for empirical dosage R² and Beagle DR2, and their correlation was assessed.
+
+- A scatter plot of empirical R² versus Beagle DR2 was generated to visualize the relationship between model-based imputation quality estimates and true accuracy.
+
+- Confirms DR2 is informative but not a perfect proxy for true accuracy.
+
+Script:
+```bash
+python scripts/imputation_accuracy_visualisation.py
+```
+- Outputs:
+  - results/evaluation/imputation_accuracy_summary.txt
+  - results/evaluation/imputation_accuracy_scatter.png
