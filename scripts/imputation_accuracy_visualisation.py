@@ -31,6 +31,5 @@ plt.scatter(df["dr2_beagle"], df["r2_empirical"], s=5, alpha=0.3) #s=5 for point
 plt.xlabel("Beagle DR2")
 plt.ylabel("Empirical dosage R²")
 plt.title("Imputation accuracy: DR2 vs empirical R²")
-plt.show()
 plt.savefig("results/evaluation/imputation_accuracy_scatter.png", dpi=300) #saving as well
-
+plt.show()
