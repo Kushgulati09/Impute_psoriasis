@@ -110,3 +110,40 @@ python scripts/imputation_accuracy_visualisation.py
 - Outputs:
   - results/evaluation/imputation_accuracy_summary.txt
   - results/evaluation/imputation_accuracy_scatter.png
+
+---
+
+### Note
+
+The following DR2 stratification and filtering steps are added to bridge benchmark evaluation and real-world imputation usage. The empirical dosage R² is computed using dense ground truth, such information is not available in real-world practice. Therefore, DR2 is calibrated against empirical R² and subsequently used as a proxy for quality-based variant filtering prior to downstream analyses. 
+
+---
+## DR2 stratification and filtering
+
+### Accuracy stratified by Beagle DR2 (Stratification)
+
+- Empirical dosage R² increases monotonically with Beagle DR2.
+  - High-confidence variants (DR2 ≥ 0.8) show near-perfect recovery, while low-DR2 variants show poor concordance with truth.
+- Created Script: `DR2_stratification.py`
+- Command:
+```bash
+python scripts/DR2_stratification.py
+```
+- Output:
+  - results/evaluation/DR2_bin_imputation_accuracy.tsv
+
+### DR2-based variant filtering
+
+- After evaluating imputation accuracy, variants with Beagle DR2 < 0.8 were excluded. This substantially increased mean empirical R² at the cost of reducing variant count, illustrating the trade-off between coverage and accuracy.
+- Variants retained:
+  - Before DR2 filter: 1097199
+  - After DR2 >= 0.8: 154107
+- Created Script: `DR2_based_filtering.sh`
+- Command:
+```bash
+bash scripts/DR2_based_filtering.sh \
+  results/imputed_chr22_biallelic.vcf.gz \
+  results/imputed_chr22_biallelic_dr2filt.vcf.gz \
+  0.8
+```
+
