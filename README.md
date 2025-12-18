@@ -24,6 +24,7 @@ For a step-by-step explanation of each stage and the reasoning behind it, please
 ├── results/ # Imputation outputs, evaluation, PRS
 ├── data/ # External score files (not tracked)
 └── tools/ # External tools (e.g. Beagle JAR)
+```
 
 ### Environment setup
 
