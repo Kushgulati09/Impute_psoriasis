@@ -8,7 +8,7 @@
 *.bcf
 *.m3vcf
 # *.log 
-*.jar
+# *.jar
 
 # Conda env files and python cache
 .env
