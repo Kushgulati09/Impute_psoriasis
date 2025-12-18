@@ -11,3 +11,13 @@ Contents:
 - `results/` : plots and evaluation outputs
 - `docs/` : notes and methods
 - `tools/` : tool dependencies (java .jar file) 
+
+### Environment setup
+
+All analyses were performed in a Conda environment documented in `environment.yml`.
+
+To recreate the environment:
+```bash
+conda env create -f environment.yml
+conda activate Impute
+```
