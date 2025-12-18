@@ -147,3 +147,45 @@ bash scripts/DR2_based_filtering.sh \
   0.8
 ```
 
+## Psoriasis PRS computation
+
+- PGS Catalogue score file used: https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001312/ScoringFiles/PGS001312.txt.gz 
+  - PGS001312 (Tanigawa et al., PLoS Genetics 2022)
+  - GRCh37
+  - GWAS-based (204 variants)
+- Created Script: `compute_psoriasis_prs.py`
+- Script functionality:
+  1. Loads PGS score file (skipping metadata lines).
+  2. Excludes haplotype entries and variants without genomic coordinates.
+  3. Matches variants by genomic position (CHROM, POS).
+  4. Harmonizes alleles using both effect and non-effect alleles from the PGS file.
+  5. Flips effect sizes when the effect allele corresponds to the reference allele.
+  6. Excludes strand-ambiguous SNPs (A/T, C/G) and allele mismatches.
+  7. Computes PRS using imputed dosages (DS) rather than hard genotypes.
+- Command:
+```bash
+python scripts/compute_psoriasis_prs.py \
+  --vcf results/imputed_chr22_biallelic.vcf.gz \
+  --score data/PGS001312.txt \
+  --out results/psoriasis_prs.tsv
+```
+- Output: 
+  - results/psoriasis_prs.tsv — one PRS value per target individual
+
+---
+
+## Interpretation and Scope
+
+- Analysis restricted to chromosome 22 due to computational constraints.
+- Of 204 variants in PGS001312, 4 variants (~2%) are located on chromosome 22 and available for scoring.
+- Chromosome 22 represents ~51 Mb of the ~3,000 Mb human genome (~1.7%), making this overlap fully expected.
+- Resulting PRS values demonstrate pipeline correctness, not biological or clinical psoriasis risk.
+
+## Key validation points:
+
+- Zero allele mismatches (successful harmonization)
+- Correct dosage-based scoring
+- Proper handling of ambiguous SNPs and edge cases 
+- Scalable design suitable for genome-wide PRS computation
+
+---
