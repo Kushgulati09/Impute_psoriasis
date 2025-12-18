@@ -13,7 +13,7 @@ For a step-by-step explanation of each stage and the reasoning behind it, please
 ---
 
 ## Repository structure:
-
+```text
 ├── environment.yml # Conda environment definition
 ├── README.md # Project overview (this file)
 ├── workflow.md # Detailed pipeline documentation
